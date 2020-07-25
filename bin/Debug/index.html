@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>The Big Picture - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/the-big-picture.css" rel="stylesheet">
+
+</head>
+
+<body id="body_c" class="ok_style" style="overflow: hidden;">
+
+  <!-- Page Content -->
+  
+    <div id="bg_glow"></div>
+    <div id="overlay"></div>
+    <canvas id="canvas"></canvas>
+    
+  <div id="info">
+    <div class="row">
+      <div class="col-lg-18 text-right" style="padding:10px;width:800px">
+        <h1 id="text_ingreso_es"></h1>
+        <h2 id="text_ingreso_enpt"></h1>
+        <h2 id="text_ingreso_porc"></h1>
+      </div>
+      <div class="col-lg-18 text-righ" style="padding-left:30px;">
+        <img width="500px;" src="css/man_ok.png">
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    var x, y, z;  
+    x = 10;    // Assign the value 5 to x
+    y = 6;    // Assign the value 6 to y
+    z = x + y;  // Assign the sum of x and y to z
+    var jsons;
+    var entradas;
+    var salidas;
+    var total = 20;
+    var porcentajeant = 0;
+
+    function leerJson()
+    {
+      $.getJSON("counter.json", function(json) {
+        jsons = json; // this will show the info it in firebug console
+
+        console.log(jsons);
+
+        entradas = jsons.entradas;
+        salidas = jsons.salidas;
+        gente = entradas - salidas;
+        console.log(gente);
+        var porcentaje = ((gente/total) * 100).toFixed(0);
+        console.log(porcentaje);
+
+        if(porcentajeant!=porcentaje)
+        {
+          porcentajeant = porcentaje;
+          if(porcentaje<70)
+            ingresar(porcentaje);
+          else
+            no_ingresar(porcentaje);
+        }
+      });
+
+      setTimeout('leerJson()', 5000);
+    }
+
+    
+    setTimeout('leerJson()', 3000);
+    //setTimeout('no_ingresar(58)', 3000);
+    //setTimeout('ingresar(10)', 6000);
+    //setTimeout('no_ingresar(100)', 9000);
+    //setTimeout('ingresar(50)', 12000);
+
+    function ingresar(porc)
+    {
+      cambiar_color(100);
+      document.getElementById("body_c").classList.remove('no_style');
+      document.getElementById("body_c").classList.add('ok_style');
+      document.getElementById("text_ingreso_es").innerHTML = "Puede ingresar";
+      document.getElementById("text_ingreso_enpt").innerHTML = "Safe entry · Pode entrar";
+      document.getElementById("text_ingreso_porc").innerHTML = porc + "%";
+    }
+
+    function no_ingresar(porc)
+    {
+      cambiar_color(0);
+      document.getElementById("body_c").classList.remove('ok_style');
+      document.getElementById("body_c").classList.add('no_style');
+      document.getElementById("text_ingreso_es").innerHTML = "No ingresar";
+      document.getElementById("text_ingreso_enpt").innerHTML = "No entry · Nao entrar";
+      document.getElementById("text_ingreso_porc").innerHTML = porc + "%";
+    }
+
+    function mostrar_ingresar()
+    {
+      ocultar();
+      setTimeout(ingresar, 3000);
+    }
+
+    function mostrar_no_ingresar()
+    {
+      ocultar();
+      setTimeout(no_ingresar, 3000);
+    }
+
+
+
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var bgg = document.getElementById("bg_glow");
+w = ctx.canvas.width = window.innerWidth;
+h = ctx.canvas.height = window.innerHeight;
+
+window.onresize = function() {
+  w = ctx.canvas.width = window.innerWidth;
+  h = ctx.canvas.height = window.innerHeight;
+  maxHeight = h*.9
+  minHeight = h*.5;
+  dots = [];
+  pushDots();
+  ctx.globalCompositeOperation = 'destination-over';
+};
+
+function cambiar_color(huex){
+  hue = huex;
+  bgg.style.background = "radial-gradient(ellipse at center, hsla("+hue+",50%,50%,.8) 0%,rgba(0,0,0,0) 100%)";
+  dots = [];
+  pushDots();
+}
+
+dots=[{}];
+mx = 0; my = 0;
+md = 100;
+maxWidth = 15;
+minWidth = 2;
+maxHeight = h*.9
+minHeight = h*.5;
+maxSpeed = 35;
+minSpeed = 6;
+hue = 100;
+hueDif = 50; // Hue +/-
+glow = 10; // Set to 0 for better performance
+ctx.globalCompositeOperation = "lighter";
+
+function pushDots(num){
+  for(i=1; i<md; i++){
+    dots.push({
+      x:Math.random()*w,
+      y:Math.random()*h/2,
+      h:Math.random()*(maxHeight-minHeight)+minHeight,
+      w:Math.random()*(maxWidth-minWidth)+minWidth,
+      c:Math.random()*((hue+hueDif)-(hue-hueDif))+(hue-hueDif),
+      m:Math.random()*(maxSpeed-minSpeed)+minSpeed
+    });
+  }
+}pushDots();
+
+function render(){
+  ctx.clearRect(0,0,w,h);
+  for(i=1; i<dots.length; i++){
+    ctx.beginPath();
+    grd = ctx.createLinearGradient(dots[i].x, dots[i].y, dots[i].x+dots[i].w, dots[i].y+dots[i].h);
+    grd.addColorStop(.0, "hsla("+dots[i].c+",50%,50%,.0)");
+    grd.addColorStop(.2, "hsla("+dots[i].c+20+",50%,50%,.1)");
+    grd.addColorStop(.5, "hsla("+dots[i].c+50+",70%,60%,.1)");
+    grd.addColorStop(.8, "hsla("+dots[i].c+80+",50%,50%,.2)");
+    grd.addColorStop(1., "hsla("+(dots[i].c+100)+",50%,50%,.0)");
+    ctx.shadowBlur = glow;
+    ctx.shadowColor = "hsla("+(dots[i].c)+",50%,50%,1)";
+    ctx.fillStyle=grd;
+    ctx.fillRect(dots[i].x,dots[i].y,dots[i].w,dots[i].h);
+    ctx.closePath();
+    dots[i].x += dots[i].m/100;
+    if(dots[i].x > w+maxWidth){
+      dots.splice(i,1);
+      dots.push({
+        x:0,
+        y:Math.random()*h,
+        h:Math.random()*(maxHeight-minHeight)+minHeight,
+        w:Math.random()*(maxWidth-minWidth)+minWidth,
+        c:Math.random()*((hue+hueDif)-(hue-hueDif))+(hue-hueDif),
+        m:Math.random()*(maxSpeed-minSpeed)+minSpeed
+      });
+    }
+  }
+  window.requestAnimationFrame(render);
+  }
+
+bgg.style.background = "radial-gradient(ellipse at center, hsla("+hue+",50%,50%,.8) 0%,rgba(0,0,0,0) 100%)";
+render();
+
+    </script>
+
+</body>
+
+</html>

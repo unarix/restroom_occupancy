@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B6464241-FF8F-47F0-9B70-F932F623719B}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BlackfinAPIConsole</RootNamespace>
+    <AssemblyName>BlackfinAPIConsole</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BlackfinUser">
+      <HintPath>..\API\BlackfinUser.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseConsoleCommand.cs" />
+    <Compile Include="Bathroom.cs" />
+    <Compile Include="BlackfinConsole.cs" />
+    <Compile Include="BlackfinConsoleCommands.cs" />
+    <Compile Include="ConfirmConsoleCommand.cs" />
+    <Compile Include="ConsoleCommand.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="web\counter.json" />
+    <None Include="web\Local State" />
+    <None Include="web\package-lock.json" />
+    <None Include="web\package.json" />
+    <None Include="web\README.md" />
+    <None Include="web\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <None Include="web\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <None Include="web\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <None Include="web\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <None Include="web\vendor\bootstrap\css\bootstrap.css.map" />
+    <None Include="web\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <None Include="web\vendor\bootstrap\js\bootstrap.bundle.js.map" />
+    <None Include="web\vendor\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <None Include="web\vendor\bootstrap\js\bootstrap.js.map" />
+    <None Include="web\vendor\bootstrap\js\bootstrap.min.js.map" />
+    <None Include="web\vendor\jquery\jquery.min.map" />
+    <None Include="web\vendor\jquery\jquery.slim.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="web\css\man_ok.png" />
+    <Content Include="web\css\no.png" />
+    <Content Include="web\css\ok.png" />
+    <Content Include="web\css\the-big-picture.css" />
+    <Content Include="web\css\wooman_ok.png" />
+    <Content Include="web\gulpfile.js" />
+    <Content Include="web\index.html" />
+    <Content Include="web\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="web\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="web\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="web\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="web\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="web\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="web\vendor\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="web\vendor\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="web\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="web\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="web\vendor\jquery\jquery.js" />
+    <Content Include="web\vendor\jquery\jquery.min.js" />
+    <Content Include="web\vendor\jquery\jquery.slim.js" />
+    <Content Include="web\vendor\jquery\jquery.slim.min.js" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

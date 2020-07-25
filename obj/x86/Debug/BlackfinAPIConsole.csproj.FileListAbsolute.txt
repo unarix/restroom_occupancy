@@ -1,0 +1,31 @@
+C:\Program Files\Infrared Integrated Systems Ltd\Irisys BlackfinAPI (.NET)\SampleConsoleApp\bin\Debug\BlackfinAPIConsole.exe
+C:\Program Files\Infrared Integrated Systems Ltd\Irisys BlackfinAPI (.NET)\SampleConsoleApp\bin\Debug\BlackfinAPIConsole.pdb
+C:\Program Files\Infrared Integrated Systems Ltd\Irisys BlackfinAPI (.NET)\SampleConsoleApp\bin\Debug\BlackfinUser.dll
+C:\Program Files\Infrared Integrated Systems Ltd\Irisys BlackfinAPI (.NET)\SampleConsoleApp\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Program Files\Infrared Integrated Systems Ltd\Irisys BlackfinAPI (.NET)\SampleConsoleApp\obj\x86\Debug\BlackfinAPIConsole.exe
+C:\Program Files\Infrared Integrated Systems Ltd\Irisys BlackfinAPI (.NET)\SampleConsoleApp\obj\x86\Debug\BlackfinAPIConsole.pdb
+C:\HVAC\PeopleCounter\C-sharp Code\obj\x86\Debug\BlackfinAPIConsole.exe
+C:\HVAC\PeopleCounter\C-sharp Code\obj\x86\Debug\BlackfinAPIConsole.pdb
+C:\HVAC\PeopleCounter\C-sharp Code\bin\Debug\BlackfinAPIConsole.exe
+C:\HVAC\PeopleCounter\C-sharp Code\bin\Debug\BlackfinAPIConsole.pdb
+C:\HVAC\PeopleCounter\C-sharp Code\obj\x86\Debug\BlackfinAPIConsole.csprojResolveAssemblyReference.cache
+C:\Users\ntello\Desktop\HVACmanagement-14d849c7c4c64d588eff6f2a1bec0da5da0c008f\PeopleCounter\C-sharp Code\bin\Debug\BlackfinAPIConsole.exe
+C:\Users\ntello\Desktop\HVACmanagement-14d849c7c4c64d588eff6f2a1bec0da5da0c008f\PeopleCounter\C-sharp Code\bin\Debug\BlackfinAPIConsole.pdb
+C:\Users\ntello\Desktop\HVACmanagement-14d849c7c4c64d588eff6f2a1bec0da5da0c008f\PeopleCounter\C-sharp Code\obj\x86\Debug\BlackfinAPIConsole.csproj.CoreCompileInputs.cache
+C:\Users\ntello\Desktop\HVACmanagement-14d849c7c4c64d588eff6f2a1bec0da5da0c008f\PeopleCounter\C-sharp Code\obj\x86\Debug\BlackfinAPIConsole.csproj.CopyComplete
+C:\Users\ntello\Desktop\HVACmanagement-14d849c7c4c64d588eff6f2a1bec0da5da0c008f\PeopleCounter\C-sharp Code\obj\x86\Debug\BlackfinAPIConsole.exe
+C:\Users\ntello\Desktop\HVACmanagement-14d849c7c4c64d588eff6f2a1bec0da5da0c008f\PeopleCounter\C-sharp Code\obj\x86\Debug\BlackfinAPIConsole.pdb
+C:\Users\ntello\Desktop\HVACmanagement-14d849c7c4c64d588eff6f2a1bec0da5da0c008f\PeopleCounter\C-sharp Code\obj\x86\Debug\BlackfinAPIConsole.csprojAssemblyReference.cache
+C:\Users\ntello\Desktop\HVACmanagement-14d849c7c4c64d588eff6f2a1bec0da5da0c008f\PeopleCounter\C-sharp Code\bin\Debug\BlackfinAPIConsole.exe.config
+C:\Users\ntello\Desktop\HVACmanagement-14d849c7c4c64d588eff6f2a1bec0da5da0c008f\PeopleCounter\C-sharp Code\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ntello\Desktop\HVACmanagement-14d849c7c4c64d588eff6f2a1bec0da5da0c008f\PeopleCounter\C-sharp Code\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ntello\Desktop\Bathrooms\bin\Debug\BlackfinAPIConsole.exe.config
+C:\Users\ntello\Desktop\Bathrooms\bin\Debug\BlackfinAPIConsole.exe
+C:\Users\ntello\Desktop\Bathrooms\bin\Debug\BlackfinAPIConsole.pdb
+C:\Users\ntello\Desktop\Bathrooms\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ntello\Desktop\Bathrooms\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ntello\Desktop\Bathrooms\obj\x86\Debug\BlackfinAPIConsole.csprojAssemblyReference.cache
+C:\Users\ntello\Desktop\Bathrooms\obj\x86\Debug\BlackfinAPIConsole.csproj.CoreCompileInputs.cache
+C:\Users\ntello\Desktop\Bathrooms\obj\x86\Debug\BlackfinAPIConsole.csproj.CopyComplete
+C:\Users\ntello\Desktop\Bathrooms\obj\x86\Debug\BlackfinAPIConsole.exe
+C:\Users\ntello\Desktop\Bathrooms\obj\x86\Debug\BlackfinAPIConsole.pdb
