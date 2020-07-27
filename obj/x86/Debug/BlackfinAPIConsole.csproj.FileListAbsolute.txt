@@ -29,3 +29,13 @@ C:\Users\ntello\Desktop\Bathrooms\obj\x86\Debug\BlackfinAPIConsole.csproj.CoreCo
 C:\Users\ntello\Desktop\Bathrooms\obj\x86\Debug\BlackfinAPIConsole.csproj.CopyComplete
 C:\Users\ntello\Desktop\Bathrooms\obj\x86\Debug\BlackfinAPIConsole.exe
 C:\Users\ntello\Desktop\Bathrooms\obj\x86\Debug\BlackfinAPIConsole.pdb
+C:\Users\ntello\source\repos\restroom_occupancy\bin\Debug\BlackfinAPIConsole.exe.config
+C:\Users\ntello\source\repos\restroom_occupancy\bin\Debug\BlackfinAPIConsole.exe
+C:\Users\ntello\source\repos\restroom_occupancy\bin\Debug\BlackfinAPIConsole.pdb
+C:\Users\ntello\source\repos\restroom_occupancy\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ntello\source\repos\restroom_occupancy\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ntello\source\repos\restroom_occupancy\obj\x86\Debug\BlackfinAPIConsole.csprojAssemblyReference.cache
+C:\Users\ntello\source\repos\restroom_occupancy\obj\x86\Debug\BlackfinAPIConsole.csproj.CoreCompileInputs.cache
+C:\Users\ntello\source\repos\restroom_occupancy\obj\x86\Debug\BlackfinAPIConsole.csproj.CopyComplete
+C:\Users\ntello\source\repos\restroom_occupancy\obj\x86\Debug\BlackfinAPIConsole.exe
+C:\Users\ntello\source\repos\restroom_occupancy\obj\x86\Debug\BlackfinAPIConsole.pdb

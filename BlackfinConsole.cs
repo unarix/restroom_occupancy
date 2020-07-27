@@ -63,8 +63,9 @@ namespace BlackfinAPIConsole
                 // Console.WriteLine("Please enter a command to execute (or 'help'):");
                 // String userString = Console.ReadLine().ToLower();
                 //String userString = "getcurrentcount";
-                String userString = "getcounts";
-                
+                String userString = "getlastncounts";
+                //String userString = "getcounts";
+
                 Console.WriteLine("Comando: ");
                 Console.WriteLine(userString + "\n");
 
@@ -96,8 +97,9 @@ namespace BlackfinAPIConsole
 
                                 // assemble any required arguments
                                 String[] args = new String[c.getArguments().Length];
-                                args[0] = DateTime.Now.AddMinutes(-30).ToString();
-                                args[1] = DateTime.Now.ToString();
+                                args[0] = "1";
+                                //args[0] = DateTime.Now.AddMinutes(-30).ToString();
+                                //args[1] = DateTime.Now.ToString();
 
                                 //int i = 0;
                                 //foreach (String s in c.getArguments())
@@ -132,7 +134,7 @@ namespace BlackfinAPIConsole
                                                 // do nothing
                                             }
                                         }
-                                        
+
                                         Bathroom b = new Bathroom();
                                         b.entradas = entradas.ToString();
                                         b.salidas = salidas.ToString();
@@ -176,10 +178,10 @@ namespace BlackfinAPIConsole
                         }
                         catch (ConnectionResetException e)
                         {
-                          Console.WriteLine(e.Message);
-                          Console.WriteLine("");
-                          Console.WriteLine("This command has caused the connection to be reset");
-                          bDisconnect = true;
+                            Console.WriteLine(e.Message);
+                            Console.WriteLine("");
+                            Console.WriteLine("This command has caused the connection to be reset");
+                            bDisconnect = true;
                         }
                     }
                     if (!executed)
@@ -188,9 +190,132 @@ namespace BlackfinAPIConsole
                     }
 
                     if (bDisconnect)
-                      break;
+                        break;
                 }
-                
+
+                // wait for a specific time
+                Console.WriteLine("#################################################");
+                Console.WriteLine("Esperando 4 segundos para la proxima ejecucion ...");
+                Console.WriteLine("#################################################");
+                Console.WriteLine();
+
+                Thread.Sleep(4000);
+            }
+        }
+
+        private void resetCounts(Socket clientLabVIEW)
+        {
+            List<ConsoleCommand> Commands = BlackfinConsoleCommands.GetAllConsoleCommands();
+
+            // sort commands by command name (don't take get/set prefix into account)
+            Commands.Sort((o1, o2) =>
+            {
+                return o1.getName().Substring(3).CompareTo(o2.getName().Substring(3));
+            });
+
+            Console.WriteLine("########################");
+            Console.WriteLine("Inicio de envio de comandos al aparato del infierno.");
+            Console.WriteLine("########################");
+            Console.WriteLine();
+
+            while (!isEnding)
+            {
+                // Console.WriteLine("Please enter a command to execute (or 'help'):");
+                // String userString = Console.ReadLine().ToLower();
+                String userString = "resetcurrentcount";
+                //String userString = "getlastncounts";
+                //String userString = "getcounts";
+
+                Console.WriteLine("Comando: ");
+                Console.WriteLine(userString + "\n");
+
+                if (userString.Equals("help"))
+                {
+                    Console.WriteLine("Help - Prints this list of available commands");
+                    Console.WriteLine("Disconnect - Disconnects from the current device");
+                    foreach (ConsoleCommand c in Commands)
+                    {
+                        Console.WriteLine(c.getName() + " - " + c.getHelp());
+                    }
+                }
+                else if (userString.Equals("disconnect"))
+                {
+                    break;
+                }
+                else
+                {
+                    // try and execute a command
+                    bool executed = false;
+                    bool bDisconnect = false;
+                    foreach (ConsoleCommand c in Commands)
+                    {
+                        try
+                        {
+                            if (c.getName().ToLower().Equals(userString))
+                            {
+                                executed = true;
+
+                                // assemble any required arguments
+                                String[] args = new String[c.getArguments().Length];
+
+                                int i = 0;
+                                foreach (String s in c.getArguments())
+                                {
+                                    Console.WriteLine("Please enter a value for " + s + ":");
+                                    args[i++] = Console.ReadLine();
+                                }
+
+                                // execute command
+                                string result = c.execute(blackfin, args);
+                                {
+
+                                    if (result == null)
+                                        Console.WriteLine("There was a problem executing the command");
+                                    else
+                                    {
+                                        Console.Write("Respuesta :\n" + result + "\n");
+                                        Console.Write("OK! ");
+
+                                        try
+                                        {
+                                            string size = result.Length.ToString().PadLeft(10, '0');
+                                            Console.WriteLine("hecho!");
+                                            Console.WriteLine();
+                                        }
+                                        catch (Exception e)
+                                        {
+                                            Console.WriteLine("Error!");
+                                            Console.WriteLine(e.Message);
+                                            Console.WriteLine("Program now exits ...");
+                                            Environment.Exit(0);
+                                        }
+                                    }
+
+                                    break;
+                                }
+                            }
+                        }
+                        catch (CommandArgumentException e)
+                        {
+                            Console.WriteLine("Problem with command argument: " + e.Message);
+                        }
+                        catch (ConnectionResetException e)
+                        {
+                            Console.WriteLine(e.Message);
+                            Console.WriteLine("");
+                            Console.WriteLine("This command has caused the connection to be reset");
+                            bDisconnect = true;
+                        }
+                    }
+                    if (!executed)
+                    {
+                        Console.WriteLine("No command was found matching: " + userString);
+                    }
+
+                    if (bDisconnect)
+                        break;
+                }
+
                 // wait for a specific time
                 Console.WriteLine("#################################################");
                 Console.WriteLine("Esperando 4 segundos para la proxima ejecucion ...");
@@ -242,6 +367,7 @@ namespace BlackfinAPIConsole
 
                     Console.WriteLine("Device Connected.\n");
                     console.DoConsoleCommandLoop(clientLabVIEW);
+                    //console.resetCounts(clientLabVIEW);
                     engine.RemoveCounterEndPoint(blackfin);
                     Console.WriteLine("Disconnected from device");
                 }
@@ -274,10 +400,10 @@ namespace BlackfinAPIConsole
     /// </summary>
     public class ConnectionResetException : Exception
     {
-      public ConnectionResetException(String ss)
-        : base(ss)
-      {
-      }
+        public ConnectionResetException(String ss)
+          : base(ss)
+        {
+        }
     }
 
 
