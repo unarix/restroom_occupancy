@@ -94,8 +94,8 @@ namespace BlackfinAPIConsole
 
                                 // assemble any required arguments
                                 String[] args = new String[c.getArguments().Length];
-                                args[0] = "1";
-                                //args[0] = DateTime.Now.AddMinutes(-30).ToString();
+                                args[0] = "30";
+                                //args[0] = DateTime.Now.AddMinutes(-20).ToString();
                                 //args[1] = DateTime.Now.ToString();
 
                                 //int i = 0;
@@ -116,21 +116,47 @@ namespace BlackfinAPIConsole
                                     {
                                         int entradas = 0;
                                         int salidas = 0;
+                                        int entradas_viejas = 0;
+                                        int salidas_viejas = 0;
+                                        int entradas_nuevas = 0;
+                                        int salidas_nuevas = 0;
                                         Console.Write("Respuesta :\n" + result + "\n");
                                         string[] resultados = result.Split('\n'); // Corto por cada renglon
-                                        foreach (string s in resultados)
+
+                                        //obtengo los resultados del minuto 20:
+                                        string[] datos = resultados[0].Split(' '); // Corto por cada espacio
+                                        entradas_viejas = int.Parse(datos[2]);
+                                        salidas_viejas = int.Parse(datos[3]);
+                                        //obtengo el resultado mas nuevo
+                                        datos = resultados[29].Split(' '); // Corto por cada espacio
+                                        entradas_nuevas = int.Parse(datos[2]);
+                                        salidas_nuevas = int.Parse(datos[3]);
+
+                                        // si los resultados mas viejos son mayores a los nuevos no los tengo en cuenta proque se reseteo hace poco
+                                        if (entradas_viejas > entradas_nuevas)
                                         {
-                                            try
-                                            {
-                                                string[] datos = s.Split(' '); // Corto por cada espacio
-                                                entradas = int.Parse(datos[2]) - entradas;
-                                                salidas = int.Parse(datos[3]) - salidas;
-                                            }
-                                            catch
-                                            {
-                                                // do nothing
-                                            }
+                                            entradas = entradas_nuevas;
+                                            salidas = salidas_nuevas;
                                         }
+                                        else
+                                        {
+                                            entradas = entradas_nuevas - entradas_viejas;
+                                            salidas = salidas_nuevas - salidas_viejas;
+                                        }
+
+                                        //foreach (string s in resultados)
+                                        //{
+                                        //    try
+                                        //    {
+                                        //        string[] datos = s.Split(' '); // Corto por cada espacio
+                                        //        entradas = int.Parse(datos[2]) - entradas;
+                                        //        salidas = int.Parse(datos[3]) - salidas;
+                                        //    }
+                                        //    catch
+                                        //    {
+                                        //        // do nothing
+                                        //    }
+                                        //}
 
                                         Bathroom b = new Bathroom();
                                         b.entradas = entradas.ToString();
@@ -196,7 +222,7 @@ namespace BlackfinAPIConsole
                 Console.WriteLine("#################################################");
                 Console.WriteLine();
 
-                Thread.Sleep(30000); // espero 30 segundos para la proxima ejecucion.
+                Thread.Sleep(4000); // espero 30 segundos para la proxima ejecucion.
             }
         }
 

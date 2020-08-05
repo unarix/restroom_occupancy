@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -91,6 +91,7 @@
 
     function ingresar(porc)
     {
+      console.log("ingreso");
       cambiar_color(100);
       document.getElementById("body_c").classList.remove('no_style');
       document.getElementById("body_c").classList.add('ok_style');
@@ -101,6 +102,7 @@
 
     function no_ingresar(porc)
     {
+      console.log("no ingreso");
       cambiar_color(0);
       document.getElementById("body_c").classList.remove('ok_style');
       document.getElementById("body_c").classList.add('no_style');
